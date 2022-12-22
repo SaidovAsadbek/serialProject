@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    border: none;
+    outline: none;
+}
+
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap);
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    max-width: 100%;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: 400;
+}
+
+header {
+    width: 100%;
+    height: 100vh;
+    background: url("../img/header.jpg") no-repeat center center / cover;
+    position: relative;
+}
+
+header .header__content {
+    position: absolute;
+    top: 35%;
+    transform: translateY(-35%);
+    width: 500px;
+}
+
+.header__content h2 {
+    font-size: 65px;
+    color: rgb(236 236 72);
+    text-transform: uppercase;
+    transform: rotate(-10deg);
+    margin-bottom: 50px;
+    text-shadow: 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.button {
+    display: inline-block;
+    font-size: 18px;
+    position: relative;
+    padding: 8px 16px;
+    color: #fff;
+    transition: all 300ms ease-in-out;
+    border: 1px solid #fff;
+    text-transform: uppercase;
+    opacity: .9;
+    padding-right: 3.5em;
+    cursor: pointer;
+}
+
+.arrow {
+    background: #3c3b6e;
+}
+
+.phone {
+    background: #333;
+}
+
+.arrow:focus {
+    background: #b22234;
+}
+
+.phone:focus {
+    background: #111;
+}
+
+.button::after,
+.button::before {
+    position: absolute;
+    padding-top: inherit;
+    padding-bottom: inherit;
+    font-size: inherit;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 2.8em;
+    transition: all 0.2s;
+    transform-origin: 50% 60%;
+}
+
+.arrow::after {
+    content: "\2794";
+}
+
+.arrow:hover::after {
+    animation: bounceRight 0.3s alternate ease infinite;
+    -webkit-animation: bounceRight 0.3s alternate ease infinite;
+}
+
+.phone::after {
+    content: "\260E";
+}
+
+.phone:hover::after {
+    -webkit-animation: wiggle 0.05s alternate ease infinite;
+    animation: wiggle 0.05s alternate ease infinite;
+}
+
+@-webkit-keyframes bounceRight {
+    from {
+        -webkit-transform: translateX(0);
+    }
+
+    to {
+        -webkit-transform: translateX(3px);
+    }
+}
+
+@keyframes bounceRight {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(3px);
+    }
+}
+
+@keyframes wiggle {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(30deg);
+    }
+}
+
+
+@-webkit-keyframes wiggle {
+    from {
+        -webkit-transform: rotate(0);
+    }
+
+    to {
+        -webkit-transform: rotate(30deg);
+    }
+}
+
+.btn__group {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.preview {
+    padding: 20px 0 100px 0;
+    position: relative;
+    background-color: #594657;
+}
+
+.tabContainer {
+    display: flex;
+    max-width: 100%;
+    width: 1130px;
+    margin: 0 auto;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.tabcontent {
+    width: 850px;
+    position: relative;
+}
+
+.tabcontent img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tabcontent__descr {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(89, 70, 87, 0.5);
+    padding: 50px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid #fff;
+    overflow: hidden;
+}
