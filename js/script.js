@@ -67,7 +67,89 @@ window.addEventListener("DOMContentLoaded", () => {
         changeToUzs = () => {
             this.price = this.price * this.transfer;
         };
-        
-        render() {}
+
+        render() {
+            const element = document.createElement("div");
+            element.classList.add("menu__item");
+
+            element.innerHTML = `
+                <img src="${this.src}" alt="${this.alt}">
+                <h3 class="menu__item-subtitle">${this.title}</h3>
+                <div class="menu__item-descr">${this.descr}</div>
+                <div class="menu__item-divider"></div>
+                <div class="menu__item-price">
+                    <div class="menu__item-cost">Price:</div>
+                    <div class="menu__item-total">
+                        <span>${this.price}</span> uzs/month
+                    </div>
+                </div>
+            `;
+            this.parentSelector.append(element);
+        }
     }
+    new MenuCard(
+        "img/tabs/1.png",
+        "Alt",
+        "Product 1",
+        "This's description",
+        11,
+        ".menu .container"
+    ).render();
+    new MenuCard(
+        "img/tabs/3.jpg",
+        "Alt",
+        "Product 2",
+        "This's description",
+        12,
+        ".menu .container"
+    ).render();
+    new MenuCard(
+        "img/tabs/2.jpg",
+        "Alt",
+        "Product 3",
+        "This's description",
+        11,
+        ".menu .container"
+    ).render();
+
+    // Modal
+    const modalTrigger = document.querySelectorAll("[data-modal]"),
+        modal = document.querySelector(".modal"),
+        modalCloseBtn = document.querySelector("[data-close]");
+
+    function closeModal() {
+        modal.classList.remove("show");
+        modal.classList.add("hide");
+        document.body.style.overflow = "auto";
+    }
+    function openModal() {
+        modal.classList.add("show");
+        modal.classList.remove("hide");
+        document.body.style.overflow = "hidden";
+    }
+
+    modalTrigger.forEach((trigger) =>
+        trigger.addEventListener("click", openModal)
+    );
+
+    modalCloseBtn.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    const modalTimerId = setTimeout(openModal, 3000);
+
+    function showModalByScroll() {
+        if (
+            window.pageYOffset + document.documentElement.clientHeight >=
+            document.documentElement.scrollHeight
+        ) {
+            openModal();
+            window.removeEventListener("scroll", showModalByScroll);
+        }
+    }
+    window.addEventListener("scroll", showModalByScroll);
 });
